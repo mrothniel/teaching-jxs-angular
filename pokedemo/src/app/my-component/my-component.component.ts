@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {Pokemon} from "../pokemon";
-import {ServicePokeService} from "./service-poke.service";
 
 @Component({
   selector: 'app-my-component',
@@ -11,25 +9,28 @@ import {ServicePokeService} from "./service-poke.service";
 })
 export class MyComponentComponent implements OnInit {
   id: string='';
-  pokes : Pokemon[] =[];
-  pokemonList : Pokemon[]=[];
-  selectPokes = new FormControl('adc');
-  public pokemons;
-  constructor(private service: ServicePokeService) {
-  }
+  pokes = [];
+  selectPokes = new FormControl('');
+
+  constructor() { }
+
 
   ngOnInit() {
-    this.service.getPokemon()
-      .subscribe(data =>{
-          this.pokemons= data;
-          //debugger
-        },err=>{
-          console.log(err);
-        }
+    this.pokes.push(
+      {'id':1, 'name': 'PIKATCHOU'}
       );
+    this.pokes.push(
+      {'id':2, 'name': 'PIKADESK'}
+    );
+    this.pokes.push(
+      {'id':3, 'name': 'ELECTRON'}
+    );
+    this.pokes.push(
+      {'id':4, 'name': 'DRAGONNE'}
+    );
   }
-
   clicSurBouton(){
+    
     alert("Le Pokemon recherche à le id : "+this.selectPokes);
   }
 
