@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 //import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {Pokemon} from "../pokemon";
 import {ServicePokeService} from "./service-poke.service";
+import {Pokemon} from "./pokemon";
+
 
 @Component({
   selector: 'app-my-component',
@@ -11,16 +12,16 @@ import {ServicePokeService} from "./service-poke.service";
 })
 export class MyComponentComponent implements OnInit {
   id: string='';
-  pokes : Pokemon[] =[];
-  selectPokes = new FormControl('adc');
-  public pokemons;
+  selectPokes : any= '';
+  public pokemons : any[];
   constructor(private service: ServicePokeService) {
   }
 
   ngOnInit() {
     this.service.getPokemon()
       .subscribe(data =>{
-          this.pokemons= data;
+        this.pokemons= data.results;
+          console.log(this.pokemons);
         },err=>{
           console.log(err);
         }

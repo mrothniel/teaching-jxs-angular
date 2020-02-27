@@ -1,18 +1,19 @@
 <p>work space</p>
-<input [(ngModel)]="id">
+<input [(ngModel)]="selectPokes">
 <input [(ngModel)]="id" [disabled]="id">
-{{id}}
 <div class="container">
     <div class="row">
       <label>
         Name:
         <select [(ngModel)]="selectPokes"   >
-          <option *ngFor="let i of (pokes | filterPokemeonPipe : 'name' : id)"
-                  [value]="i.id"> {{i.name}}
-          </option>
+
+        <option *ngFor="let i of (pokemons | filterPokemeonPipe : 'name' : selectPokes)"
+                  [value]="i.name"> {{i.name}}
+        </option>
+<!--          <option *ngFor="let pokemon of pokemons" value="{{pokemon.name}}">{{pokemon.name}}</option>-->
+
         </select>
       </label>
-
     <div>
   </div>
     <div>
