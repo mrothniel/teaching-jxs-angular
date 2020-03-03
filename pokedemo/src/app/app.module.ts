@@ -1,31 +1,48 @@
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
+import { AngularMaterialModule } from './ui/angularmaterial.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'; 
+
+
+import 'hammerjs';
+
+import { FormsModule } from '@angular/forms';
 import { MyComponentComponent } from './my-component/my-component.component';
-import { FilterPokemeonPipePipe } from './my-component/filter-pokemeon--pipe.pipe';
-import {HttpClientModule} from "@angular/common/http";
-import {ServicePokeService} from "./my-component/service-poke.service";
+import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
+import { AfficheInfosComponent } from './affiche-infos/affiche-infos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // PageNotFoundComponent,
     MyComponentComponent,
-    FilterPokemeonPipePipe
+    FilterPokemonPipePipe,
+    AfficheInfosComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule, //Line to add
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    BrowserModule.withServerTransition({ appId: 'sir' }),
+    CommonModule,
+    HttpModule,
+    HttpClientModule,
+   // BrowserAnimationsModule,
+    AngularMaterialModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+// sir
 
+    FormsModule
   ],
-  providers: [ServicePokeService],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers: []
 })
 export class AppModule { }

@@ -1,12 +1,19 @@
 export class Pokemon {
-  id : number;
-  name : string = '';
+  id: number;
+  name: string;
+  order: number;
+  height: number;
+  weight: number;
+  img: string;
+  // tslint:disable-next-line:variable-name
+  base_experience: number;
+  stats: any[];
+  sprites: any;
 
-  constructor(id: number, name: string, ) {
-    this.id = id;
-    this.name = name;
+}
 
-  }
-
-
+export class stats {
+  name: string;
+  baseStat: number;
+  effort: number;
 }
